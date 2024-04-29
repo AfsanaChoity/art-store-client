@@ -1,20 +1,38 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
+    const [error, setError] = useState("");
 
     const handleRegister = e =>{
         e.preventDefault();
+
+       
+
         const form = e.target;
         const name = form.name.value;
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, photo, email, password);
+
+        if(password.length < 6) {
+            setError("Password must be 6 characters")
+            return;
+        }
+
+        if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
+            setError("Password must contain one uppercase letter & one lowercase letter")
+            return;
+        }
+
+        //user created i firebase
         createUser(email, password)
         .then(result => {
             console.log(result.user);
@@ -33,13 +51,15 @@ const Register = () => {
             .then(res => res.json())
             .then(data =>{
                 if(data.insertedId){
-                    alert('user added to database');
+                    toast("Registration Successful!")
                 }
             })
         })
         .catch(error => {
-            console.error(error);
+            setError(error.message.split("/")[1].split(")")[0]);
         })
+
+        setError('');
     }
     return (
         <div className="flex justify-center my-10">
@@ -71,6 +91,12 @@ const Register = () => {
                         </div>
                     </div>
                     <div className="space-y-2">
+                        {/* show error message */}
+                    <div>
+                                {
+                                    error && <span className="text-red-500">{error}</span>
+                                }
+                            </div>
                         <div>
                             <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">Register</button>
                         </div>
@@ -80,6 +106,7 @@ const Register = () => {
                     </div>
                 </form>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
