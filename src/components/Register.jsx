@@ -20,7 +20,7 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo, email, password);
+        // console.log(name, photo, email, password);
 
         if(password.length < 6) {
             setError("Password must be 6 characters")
@@ -35,7 +35,7 @@ const Register = () => {
         //user created i firebase
         createUser(email, password)
         .then(result => {
-            console.log(result.user);
+            // console.log(result.user);
 
             //new user created in database
             const createdAt = result.user?.metadata?.creationTime;
@@ -52,7 +52,9 @@ const Register = () => {
             .then(data =>{
                 if(data.insertedId){
                     toast("Registration Successful!")
+                    e.target.reset();
                 }
+                
             })
         })
         .catch(error => {
