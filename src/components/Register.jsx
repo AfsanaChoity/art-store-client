@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState("");
 
     const handleRegister = e =>{
@@ -37,9 +37,15 @@ const Register = () => {
         .then(result => {
             // console.log(result.user);
 
+            //update user profile
+            updateUserProfile(name, photo)
+                .then(() =>{
+                    console.log("updated successful");
+                })
+
             //new user created in database
             const createdAt = result.user?.metadata?.creationTime;
-            const user = { email, createdAt: createdAt };
+            const user = { name, photo, email, createdAt: createdAt };
 
             fetch('http://localhost:5000/user', {
                 method: 'POST',

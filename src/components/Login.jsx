@@ -17,8 +17,9 @@ const Login = () => {
         console.log(email, password);
 
         loginUser(email, password)
-            .then(() => {
+            .then(result => {
                 toast("Login Successful!")
+                setUser(result.user)
                 e.target.reset();
             })
             .catch(() => setError("Invalid Email or Password"))
