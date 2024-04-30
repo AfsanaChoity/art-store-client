@@ -1,8 +1,11 @@
-
+import {  Fade } from "react-awesome-reveal";
+import CraftItemSection from "./CraftItemSection";
+import Features from "./Features";
 
 const Home = () => {
     return (
         <div className="my-10">
+            {/* section one */}
             <div className="carousel rounded-box">
                 <div className="carousel-item w-1/3">
                     <img src="https://img.freepik.com/premium-photo/woman-s-face-is-made-up-geometric-shapes-cyberpunk-colorful-fractalism-cubism_834088-1.jpg" alt="Burger" />
@@ -22,6 +25,25 @@ const Home = () => {
                
                 
             </div>
+
+            {/* section 2 */}
+            <div className="mt-10">
+                <Fade duration={1000} delay={1000}>
+                <h2 className="text-2xl font-semibold text-center mb-4">Your Craft Items</h2>
+                
+                <p className="text-center mx-10 lg:mx-20 text-xs">Our collection of craft items features a diverse range of handmade creations, each meticulously crafted to inspire creativity and add a touch of artistry to any project.</p>
+                </Fade>
+
+                <div className="mt-8">
+                <CraftItemSection></CraftItemSection>
+                </div>
+
+                <Features></Features>
+                
+                
+                
+            </div>
+
         </div>
     );
 };
