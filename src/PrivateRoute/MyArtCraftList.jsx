@@ -7,6 +7,7 @@ const MyArtCraftList = () => {
     const { user } = useContext(AuthContext);
     // console.log(user);
     const [items, setItem] = useState([]);
+    const [control, setControl] = useState(false);
 
 
     useEffect(() => {
@@ -16,7 +17,7 @@ const MyArtCraftList = () => {
                 setItem(data);
                 console.log(data);
             })
-    }, [])
+    }, [user, control])
 
     //delete item
     const handleDeleteItem = (id) => {
@@ -26,7 +27,9 @@ const MyArtCraftList = () => {
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
+            if(data.deletedCount > 0){
+                setControl(!control)
+            }
         })
     }
 
