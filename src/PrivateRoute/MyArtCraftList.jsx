@@ -9,20 +9,37 @@ const MyArtCraftList = () => {
     const { user } = useContext(AuthContext);
     // console.log(user);
     const [items, setItem] = useState([]);
+    const [filteredItems, setFilteredItems] = useState([]);
     const [control, setControl] = useState(false);
-    
+    // const [selectedFilter, setSelectedFilter] = useState("all");
+
+
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myItem/${user?.email}`)
+        fetch(` https://art-store-server-a4n4s1zml-afsana-mimi-choitys-projects.vercel.app/myItem/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setItem(data);
+                setFilteredItems(data);
                 // console.log(data);
             })
     }, [user, control])
 
-    // const newItems = items;
+    // // Filter
+    // const handleFilterChange = (event) => {
+    //     setSelectedFilter(event.target.value);
+    //   };
+
+    //   const filteredCraftItems = user
+    //     ? items.filter((item) => item.email === user.email)
+    //     : items; 
+
+    //   const displayedCraftItems =
+    //   selectedFilter === "all"
+    //     ? filteredCraftItems
+    //     : filteredCraftItems.filter((item) => item.customization === selectedFilter);
+
 
     //delete item
     const handleDeleteItem = (id) => {
@@ -36,7 +53,7 @@ const MyArtCraftList = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/delete/${id}`, {
+                fetch(` https://art-store-server-a4n4s1zml-afsana-mimi-choitys-projects.vercel.app/delete/${id}`, {
                     method: 'DELETE',
 
                 })
@@ -55,31 +72,48 @@ const MyArtCraftList = () => {
         });
 
     }
-//search item
+    //search item
     const handleSearch = (value) => {
-        
-        const filteredItems = items.filter(item =>
-            item.customization.toLowerCase().includes(value.toLowerCase())
-        );
-        setItem(filteredItems);
-        // console.log(items);
+
+        if (value === "All") {
+            // Show all items
+            setFilteredItems(items);
+        } else {
+            // Filter items based on customization
+            const filtered = items.filter(item =>
+                item.customization.toLowerCase().includes(value.toLowerCase())
+            );
+            setFilteredItems(filtered);
+        }
     };
-    // setItem(newItems);
+
 
     return (
 
         <div className="mt-4">
             <h3 className="text-center text-2xl font-semibold">My Art & Craft List</h3>
-            <div className="dropdown dropdown-bottom flex justify-center mb-20 mt-4">
+            {/* drop down */}
+            <div className="dropdown dropdown-bottom flex justify-center mb-40 mt-4">
                 <div tabIndex={0} role="button" className="btn m-1">Search</div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><button onClick={() =>handleSearch("Yes")} className="btn  mb-1">Yes</button></li>
-                    <li><button onClick={() =>handleSearch("No")} className="btn ">No</button></li>
+                    <li><button onClick={() => handleSearch("All")} className="btn mb-1">All</button></li>
+                    <li><button onClick={() => handleSearch("Yes")} className="btn  mb-1">Yes (Customizable)</button></li>
+                    <li><button onClick={() => handleSearch("No")} className="btn ">No (Not Customizable)</button></li>
                 </ul>
             </div>
+
+            {/* <div className="dropdown mb-10 border p-2 text-[#8F3034] font-bold text-xl">
+            <select value={selectedFilter} onChange={handleFilterChange}>
+              <option value="all">All</option>
+              <option value="yes">Yes (Customizable)</option>
+              <option value="no">No (Not Customizable)</option>
+            </select>
+          </div> */}
+
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {
-                    items?.map(item => (
+                    filteredItems?.map(item => (
                         <div key={item._id} className="my-10  flex justify-center ">
                             <div className="card w-96 bg-base-100 shadow-xl ">
                                 <figure><img src={item.photo} alt="Shoes" /></figure>

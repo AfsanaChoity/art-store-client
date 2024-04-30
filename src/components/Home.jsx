@@ -2,10 +2,25 @@ import {  Fade } from "react-awesome-reveal";
 import CraftItemSection from "./CraftItemSection";
 import Features from "./Features";
 import Contact from "./Contact";
+import ArtCraftCategorySection from "./ArtCraftCategorySection";
+import { Typewriter } from 'react-simple-typewriter'
 
 const Home = () => {
+    
     return (
         <div className="my-10">
+             <div className="text-center mb-4 text-xl font-semibold">
+            <Typewriter
+            words={['Landscape Painting', 'Portrait Drawing', 'Watercolour Painting', 'Oil Painting', 'Charcoal Sketching', 'Cartoon Drawing']}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+            
+          />
+            </div>
             {/* section one */}
             <div className="carousel rounded-box mx-10">
                 <div className="carousel-item w-1/3">
@@ -28,19 +43,21 @@ const Home = () => {
             </div>
 
             {/* section 2 */}
+           
             <div className="mt-10">
-                <Fade duration={1000} delay={1000}>
-                <h2 className="text-2xl font-semibold text-center mb-4">Your Craft Items</h2>
+                
+                <h2 className="text-2xl font-semibold text-center mb-4"> Craft Items</h2>
                 
                 <p className="text-center mx-10 lg:mx-20 text-xs">Our collection of craft items features a diverse range of handmade creations, each meticulously crafted to inspire creativity and add a touch of artistry to any project.</p>
-                </Fade>
+                
 
                 <div className="mt-8">
                 <CraftItemSection></CraftItemSection>
                 </div>
-
+                <ArtCraftCategorySection></ArtCraftCategorySection>
                 <Features></Features>
                 <Contact></Contact>
+                
                 
                 
                 

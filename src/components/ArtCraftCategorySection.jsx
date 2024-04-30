@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
 
-const CraftItemSection = () => {
+const ArtCraftCategorySection = () => {
     const { user, loading } = useContext(AuthContext);
     // console.log(user);
     const [items, setItem] = useState([]);
@@ -24,9 +24,9 @@ const CraftItemSection = () => {
     if (loading) {
         return <div className="text-center mt-20"><span className=" loading loading-spinner loading-lg"></span></div>
     }
-
     return (
-        <div>
+        <div className="">
+            <h2 className="text-2xl font-semibold text-center">Art & Craft Category </h2>
             <div className="">
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -64,4 +64,4 @@ const CraftItemSection = () => {
     );
 };
 
-export default CraftItemSection;
+export default ArtCraftCategorySection;

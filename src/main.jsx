@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: '/artCraftItems',
         element: <ArtCraftItems></ArtCraftItems>,
-        loader: () => fetch('http://localhost:5000/artCraftItems')
+        loader: () => fetch(' https://art-store-server-a4n4s1zml-afsana-mimi-choitys-projects.vercel.app/artCraftItems')
       },
       {
         path: '/detailsItem/:id',
@@ -67,8 +67,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProvider>
-    
+
   </React.StrictMode>,
 )
