@@ -17,6 +17,8 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import AddCraftItem from './PrivateRoute/AddCraftItem';
 import MyArtCraftList from './PrivateRoute/MyArtCraftList';
 import UpdateItem from './PrivateRoute/UpdateItem';
+import ArtCraftItems from './components/ArtCraftItems';
+import DetailsItem from './PrivateRoute/DetailsItem';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,15 @@ const router = createBrowserRouter([
       {
         path: '/updateItem/:id',
         element: <PrivateRoute><UpdateItem></UpdateItem></PrivateRoute>,
+      },
+      {
+        path: '/artCraftItems',
+        element: <ArtCraftItems></ArtCraftItems>,
+        loader: () => fetch('http://localhost:5000/artCraftItems')
+      },
+      {
+        path: '/detailsItem/:id',
+        element: <PrivateRoute><DetailsItem></DetailsItem></PrivateRoute>,
       }
 
     ],
