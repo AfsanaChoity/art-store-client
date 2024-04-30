@@ -1,6 +1,6 @@
 
 
-const ArtCraftList = () => {
+const MyArtCraftList = () => {
     return (
         <div>
             my art & carft list
@@ -8,4 +8,4 @@ const ArtCraftList = () => {
     );
 };
 
-export default ArtCraftList;
+export default MyArtCraftList;

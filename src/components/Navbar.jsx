@@ -7,15 +7,15 @@ import { Tooltip } from 'react-tooltip'
 const Navbar = () => {
 
     const { logout, user } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/updateProfile'>All Art & craft Items</NavLink></li>
-        <li><NavLink to='/userProfile'>Add Craft Item</NavLink></li>
-        <li><NavLink to='/userProfile'>My Art&Craft List</NavLink></li>
-        <li><NavLink to='/contact'>Contact</NavLink></li>
-        <li><NavLink to='/contact'>About Us</NavLink></li>
+        <li><NavLink to='/allArt'>All Art & craft Items</NavLink></li>
+        <li><NavLink to='/addItem'>Add Craft Item</NavLink></li>
+        <li><NavLink to='/myList'>My Art&Craft List</NavLink></li>
+        {/* <li><NavLink to='/contact'>Contact</NavLink></li> */}
+        {/* <li><NavLink to='/contact'>About Us</NavLink></li> */}
     </>
     return (
         <div>

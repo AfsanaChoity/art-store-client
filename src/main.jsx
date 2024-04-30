@@ -13,6 +13,9 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import AuthProvider from './AuthProvider/AuthProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import AddCraftItem from './PrivateRoute/AddCraftItem';
+import MyArtCraftList from './PrivateRoute/MyArtCraftList';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,14 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: '/addItem',
+        element: <PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>
+      },
+      {
+        path: '/myList',
+        element: <PrivateRoute><MyArtCraftList></MyArtCraftList></PrivateRoute>
+      }
 
     ],
   },
