@@ -1,12 +1,13 @@
 import {  Fade } from "react-awesome-reveal";
 import CraftItemSection from "./CraftItemSection";
 import Features from "./Features";
+import Contact from "./Contact";
 
 const Home = () => {
     return (
         <div className="my-10">
             {/* section one */}
-            <div className="carousel rounded-box">
+            <div className="carousel rounded-box mx-10">
                 <div className="carousel-item w-1/3">
                     <img src="https://img.freepik.com/premium-photo/woman-s-face-is-made-up-geometric-shapes-cyberpunk-colorful-fractalism-cubism_834088-1.jpg" alt="Burger" />
                 </div>
@@ -39,6 +40,7 @@ const Home = () => {
                 </div>
 
                 <Features></Features>
+                <Contact></Contact>
                 
                 
                 
