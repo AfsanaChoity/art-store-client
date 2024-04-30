@@ -16,6 +16,7 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import AddCraftItem from './PrivateRoute/AddCraftItem';
 import MyArtCraftList from './PrivateRoute/MyArtCraftList';
+import UpdateItem from './PrivateRoute/UpdateItem';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/myList',
         element: <PrivateRoute><MyArtCraftList></MyArtCraftList></PrivateRoute>
+      },
+      {
+        path: '/updateItem/:id',
+        element: <PrivateRoute><UpdateItem></UpdateItem></PrivateRoute>,
       }
 
     ],
