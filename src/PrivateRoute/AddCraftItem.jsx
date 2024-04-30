@@ -57,58 +57,58 @@ const AddCraftItem = () => {
                 <div className="">
                     <label>Item Name</label>
                     <br />
-                    <input type="text" name="itemName" className="rounded p-4 mt-2 text-xs" placeholder="Enter item name" required/>
+                    <input type="text" name="itemName" className="border rounded p-4 mt-2 text-xs" placeholder="Enter item name" required/>
                 </div>
                 <div className="">
                     <label>Photo URL</label>
                     <br />
-                    <input type="text" name="photo" className="rounded p-4 mt-2 text-xs" placeholder="Enter Photo URL of Item" required/>
+                    <input type="text" name="photo" className="border rounded p-4 mt-2 text-xs" placeholder="Enter Photo URL of Item" required/>
                 </div>
                 <div className="">
                     <label>Subcategory</label>
                     <br />
-                    <input type="text" name="subcategory" className="rounded p-4 mt-2 text-xs" placeholder="Subcategory name" required/>
+                    <input type="text" name="subcategory" className="border rounded p-4 mt-2 text-xs" placeholder="Subcategory name" required/>
                 </div>
                
                 <div className="">
                     <label>Price</label>
                     <br />
-                    <input type="text" name="price" className="rounded p-4 mt-2 text-xs" placeholder="0$" required/>
+                    <input type="text" name="price" className="border rounded p-4 mt-2 text-xs" placeholder="0$" required/>
                 </div>
                 <div className="">
                     <label>Rating</label>
                     <br />
-                    <input type="text" name="rating" className="rounded p-4 mt-2 text-xs" placeholder="1 to 5" required/>
+                    <input type="text" name="rating" className="border rounded p-4 mt-2 text-xs" placeholder="1 to 5" required/>
                 </div>
                 <div className="">
                     <label>Customization</label>
                     <br />
-                    <input type="text" name="customization" className="rounded p-4 mt-2 text-xs" placeholder="Yes or No" required/>
+                    <input type="text" name="customization" className="border rounded p-4 mt-2 text-xs" placeholder="Yes or No" required/>
                 </div>
                 <div className="">
                     <label>Processing Time</label>
                     <br />
-                    <input type="text" name="processingTime" className="rounded p-4 mt-2 text-xs" placeholder="in days" required/>
+                    <input type="text" name="processingTime" className="border rounded p-4 mt-2 text-xs" placeholder="in days" required/>
                 </div>
                 <div className="">
                     <label>Stock Status</label>
                     <br />
-                    <input type="text" name="stockStatus" className="rounded p-4 mt-2 text-xs" placeholder="In stock / Made to Order" required/>
+                    <input type="text" name="stockStatus" className="border rounded p-4 mt-2 text-xs" placeholder="In stock / Made to Order" required/>
                 </div>
                 <div className="">
                     <label>User Email</label>
                     <br />
-                    <input type="email" name="email" className="rounded p-4 mt-2 text-xs" placeholder="Enter your email" defaultValue={user.email} required/>
+                    <input type="email" name="email" className="border rounded p-4 mt-2 text-xs" placeholder="Enter your email" defaultValue={user.email} required/>
                 </div>
                 <div className="">
                     <label>User Name</label>
                     <br />
-                    <input type="text" name="name" className="rounded p-4 mt-2 text-xs" placeholder="Enter your name" defaultValue={user.displayName} required/>
+                    <input type="text" name="name" className="border rounded p-4 mt-2 text-xs" placeholder="Enter your name" defaultValue={user.displayName} required/>
                 </div>
                 <div className="grid col-span-2">
                     <label>Description</label>
                     
-                    <input type="text" name="description" className="rounded p-4 mt-2 text-xs" placeholder="Describe your item"  required/>
+                    <input type="text" name="description" className="border rounded p-4 mt-2 text-xs" placeholder="Describe your item"  required/>
                 </div>
                 
                 

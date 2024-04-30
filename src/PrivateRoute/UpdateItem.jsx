@@ -70,50 +70,50 @@ const UpdateItem = () => {
                 <div className="">
                     <label>Item Name</label>
                     <br />
-                    <input type="text" name="itemName" className="rounded p-4 mt-2 text-xs" placeholder="Enter item name" defaultValue={item.itemName} required/>
+                    <input type="text" name="itemName" className="border rounded p-4 mt-2 text-xs" placeholder="Enter item name" defaultValue={item.itemName} required/>
                 </div>
                 <div className="">
                     <label>Photo URL</label>
                     <br />
-                    <input type="text" name="photo" className="rounded p-4 mt-2 text-xs" placeholder="Enter Photo URL of Item" defaultValue={item.photo} required/>
+                    <input type="text" name="photo" className="border rounded p-4 mt-2 text-xs" placeholder="Enter Photo URL of Item" defaultValue={item.photo} required/>
                 </div>
                 <div className="">
                     <label>Subcategory</label>
                     <br />
-                    <input type="text" name="subcategory" className="rounded p-4 mt-2 text-xs" placeholder="Subcategory name" defaultValue={item.subcategory} required/>
+                    <input type="text" name="subcategory" className="border rounded p-4 mt-2 text-xs" placeholder="Subcategory name" defaultValue={item.subcategory} required/>
                 </div>
                
                 <div className="">
                     <label>Price</label>
                     <br />
-                    <input type="text" name="price" className="rounded p-4 mt-2 text-xs" placeholder="0$" defaultValue={item.price} required/>
+                    <input type="text" name="price" className="border rounded p-4 mt-2 text-xs" placeholder="0$" defaultValue={item.price} required/>
                 </div>
                 <div className="">
                     <label>Rating</label>
                     <br />
-                    <input type="text" name="rating" className="rounded p-4 mt-2 text-xs" placeholder="1 to 5" defaultValue={item.rating} required/>
+                    <input type="text" name="rating" className="border rounded p-4 mt-2 text-xs" placeholder="1 to 5" defaultValue={item.rating} required/>
                 </div>
                 <div className="">
                     <label>Customization</label>
                     <br />
-                    <input type="text" name="customization" className="rounded p-4 mt-2 text-xs" placeholder="Yes or No" defaultValue={item.customization} required/>
+                    <input type="text" name="customization" className="border rounded p-4 mt-2 text-xs" placeholder="Yes or No" defaultValue={item.customization} required/>
                 </div>
                 <div className="">
                     <label>Processing Time</label>
                     <br />
-                    <input type="text" name="processingTime" className="rounded p-4 mt-2 text-xs" placeholder="in days" defaultValue={item.processingTime} required/>
+                    <input type="text" name="processingTime" className="border rounded p-4 mt-2 text-xs" placeholder="in days" defaultValue={item.processingTime} required/>
                 </div>
                 <div className="">
                     <label>Stock Status</label>
                     <br />
-                    <input type="text" name="stockStatus" className="rounded p-4 mt-2 text-xs" placeholder="In stock / Made to Order" defaultValue={item.stockStatus} required/>
+                    <input type="text" name="stockStatus" className="border rounded p-4 mt-2 text-xs" placeholder="In stock / Made to Order" defaultValue={item.stockStatus} required/>
                 </div>
                
                 
                 <div className="grid col-span-2">
                     <label>Description</label>
                     
-                    <input type="text" name="description" className="rounded p-4 mt-2 text-xs" placeholder="Describe your item" defaultValue={item.description} required/>
+                    <input type="text" name="description" className="border rounded p-4 mt-2 text-xs" placeholder="Describe your item" defaultValue={item.description} required/>
                 </div>
                 
                 
