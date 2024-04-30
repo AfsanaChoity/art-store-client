@@ -10,6 +10,7 @@ const MyArtCraftList = () => {
     // console.log(user);
     const [items, setItem] = useState([]);
     const [control, setControl] = useState(false);
+    
 
 
     useEffect(() => {
@@ -17,9 +18,11 @@ const MyArtCraftList = () => {
             .then(res => res.json())
             .then(data => {
                 setItem(data);
-                console.log(data);
+                // console.log(data);
             })
     }, [user, control])
+
+    // const newItems = items;
 
     //delete item
     const handleDeleteItem = (id) => {
@@ -31,61 +34,78 @@ const MyArtCraftList = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/delete/${id}`, {
                     method: 'DELETE',
-        
+
                 })
-                .then((res) => res.json())
-                .then((data) => {
-                    if(data.deletedCount > 0){
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
-                          });
-                        setControl(!control)
-                    }
-                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            setControl(!control)
+                        }
+                    })
             }
-          });
-        
+        });
+
     }
+//search item
+    const handleSearch = (value) => {
+        
+        const filteredItems = items.filter(item =>
+            item.customization.toLowerCase().includes(value.toLowerCase())
+        );
+        setItem(filteredItems);
+        // console.log(items);
+    };
+    // setItem(newItems);
 
     return (
 
         <div className="mt-4">
             <h3 className="text-center text-2xl font-semibold">My Art & Craft List</h3>
+            <div className="dropdown dropdown-bottom flex justify-center mb-20 mt-4">
+                <div tabIndex={0} role="button" className="btn m-1">Search</div>
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><button onClick={() =>handleSearch("Yes")} className="btn  mb-1">Yes</button></li>
+                    <li><button onClick={() =>handleSearch("No")} className="btn ">No</button></li>
+                </ul>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {
-                items?.map(item => (
-                    <div key={item._id} className="my-10  flex justify-center ">
-                        <div className="card w-96 bg-base-100 shadow-xl ">
-                            <figure><img src={item.photo} alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    {item.itemName}
-                                    <div className="badge badge-secondary">{item.price} $</div>
-                                </h2>
-                                <p className="flex items-center gap-1">Customization:  {item.customization}</p>
-                                <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">
-                                    <p className="flex items-center gap-1"> {item.rating} <FaStar /></p>
+                {
+                    items?.map(item => (
+                        <div key={item._id} className="my-10  flex justify-center ">
+                            <div className="card w-96 bg-base-100 shadow-xl ">
+                                <figure><img src={item.photo} alt="Shoes" /></figure>
+                                <div className="card-body">
+                                    <h2 className="card-title">
+                                        {item.itemName}
+                                        <div className="badge badge-secondary">{item.price} $</div>
+                                    </h2>
+                                    <p className="flex items-center gap-1">Customization:  {item.customization}</p>
+                                    <div className="card-actions justify-end">
+                                        <div className="badge badge-outline">
+                                            <p className="flex items-center gap-1"> {item.rating} <FaStar /></p>
+                                        </div>
+                                        <div className="badge badge-outline">{item.stockStatus}</div>
                                     </div>
-                                    <div className="badge badge-outline">{item.stockStatus}</div>
-                                </div>
-                                <div className="flex justify-between mt-4">
-                                   <Link to={`/updateItem/${item._id}`}>
-                                   <button className="btn">Update</button>
-                                   </Link>
-                                    <button onClick={()=>handleDeleteItem(item._id)} className="btn">Delete</button>
+                                    <div className="flex justify-between mt-4">
+                                        <Link to={`/updateItem/${item._id}`}>
+                                            <button className="btn">Update</button>
+                                        </Link>
+                                        <button onClick={() => handleDeleteItem(item._id)} className="btn">Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))
-            }
+                    ))
+                }
             </div>
 
         </div>
